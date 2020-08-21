@@ -1,0 +1,20 @@
+spring:
+  profiles: default
+  application:
+    name: employee-department-server
+
+server:
+  port: ${PORT:8761}
+
+eureka:
+  client:
+    register-with-eureka: false # говорит серверу не регистрировать самого себя как сервис внутри service-discovery механизма.
+    fetch-registry: false # если включено - встроенный в сервер клиент попробует извлечь registry
+    instance-info-replication-interval-seconds: 10 # как часто данные о клиенте реплицируются на сервере
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ # default-ный url сервиса
+  server:
+    eviction-interval-timer-in-ms: 50000 # с какой периодичностью эврика удаляет просроченных клиентов
+    wait-time-in-ms-when-sync-empty: 5 # время в миллисекундах, в течение которого Eureka Server будет ожидать между синхронизациями с клиентами.
+  instance:
+    hostname: my-eureka-server.com # host эврики (если сервер и клиент расположены не на Localhost)
