@@ -1,0 +1,4 @@
+id,first_name,second_name,third_name,sex,birth_date,tel_number,email,hire_date,resign_date,position_id,salary,department_id,is_department_head
+1,Semen,Varlamov,Ivanovich,MALE,1987-05-12,89356662255,dsfsd@sdfsdf.sd,2010-05-12,null,1,50000,1,false
+2,Ivan,Ivanov,Sergeevich,MALE,1985-05-12,89375584411,asdsa@sdas.dd,2015-05-12,null,2,65000,1,true
+3,Olga,Alexeeva,Dmitrievna,FEMALE,2000-05-12,89314489955,sdadsa@ddds.ss,2018-04-01,null,2,55000,2,true

@@ -1,0 +1,113 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="create_employee" author="Dmitrii_Akhmetshin">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="employee"/>
+            </not>
+        </preConditions>
+        <createTable tableName="employee">
+            <column name="id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="second_name" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="third_name" type="VARCHAR(255)"/>
+            <column name="sex" type="VARCHAR(6)">
+                <constraints nullable="false" />
+            </column>
+            <column name="birth_date" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="tel_number" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="hire_date" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="resign_date" type="date"/>
+            <column name="position_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="salary" type="BIGINT">
+                <constraints nullable="false" />
+            </column>
+            <column name="department_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="is_department_head" type="BOOLEAN">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add_employee_pk" author="Dmitrii_Akhmetshin">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="employee"/>
+            <not>
+                <primaryKeyExists primaryKeyName="employee_pk" tableName="employee"/>
+            </not>
+        </preConditions>
+        <addPrimaryKey constraintName="employee_pk"
+                       tableName="employee"
+                       columnNames="id"/>
+    </changeSet>
+
+    <changeSet id="create_employee_seq" author="Dmitrii_Akhmetshin">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="employee"/>
+            <not>
+                <sequenceExists sequenceName="employee_id_seq"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="employee_id_seq" incrementBy="1" startValue="1"/>
+    </changeSet>
+
+    <changeSet id="create_position" author="Dmitrii_Akhmetshin">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="position"/>
+            </not>
+        </preConditions>
+        <createTable tableName="position">
+            <column name="id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add_position_pk" author="Dmitrii_Akhmetshin">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="position"/>
+            <not>
+                <primaryKeyExists primaryKeyName="position_pk" tableName="position"/>
+            </not>
+        </preConditions>
+        <addPrimaryKey constraintName="position_pk"
+                       tableName="position"
+                       columnNames="id"/>
+    </changeSet>
+
+    <changeSet id="create_position_seq" author="Dmitrii_Akhmetshin">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="position"/>
+            <not>
+                <sequenceExists sequenceName="position_id_seq"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="position_id_seq" incrementBy="1" startValue="1"/>
+    </changeSet>
+</databaseChangeLog>

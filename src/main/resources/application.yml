@@ -3,6 +3,19 @@ spring:
   application:
     name: employee-department-server
 
+  # Database config
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/employee?currentSchema=public
+    username: postgres
+    password: postgres
+    jpa:
+      database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+  # Liquibase config
+  liquibase:
+    enabled: false
+#    change-log: classpath:common_changelog.xml
+
 server:
   port: ${PORT:8761}
 
