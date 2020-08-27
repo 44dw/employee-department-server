@@ -31,3 +31,7 @@ eureka:
     wait-time-in-ms-when-sync-empty: 5 # время в миллисекундах, в течение которого Eureka Server будет ожидать между синхронизациями с клиентами.
   instance:
     hostname: my-eureka-server.com # host эврики (если сервер и клиент расположены не на Localhost)
+
+feign:
+  hystrix:
+    enabled: true
