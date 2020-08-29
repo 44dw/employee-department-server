@@ -12,6 +12,9 @@ public class EmployeeMapper implements CommonMapper<Employee, EmployeeDto> {
     @Autowired
     private DepartmentClient departmentClient;
 
+    @Autowired
+    private PositionMapper positionMapper;
+
     @Override
     public Employee mapToDomain(EmployeeDto employeeDto) {
         return Employee.builder()
@@ -25,7 +28,7 @@ public class EmployeeMapper implements CommonMapper<Employee, EmployeeDto> {
                 .email(employeeDto.getEmail())
                 .hireDate(employeeDto.getHireDate())
                 .resignDate(employeeDto.getResignDate())
-                .position(employeeDto.getPosition())
+                .position(this.positionMapper.mapToDomain(employeeDto.getPosition()))
                 .salary(employeeDto.getSalary())
                 .departmentId(employeeDto.getDepartment().getId())
                 .isDepartmentHead(employeeDto.isDepartmentHead())
@@ -45,7 +48,7 @@ public class EmployeeMapper implements CommonMapper<Employee, EmployeeDto> {
                 .email(employee.getEmail())
                 .hireDate(employee.getHireDate())
                 .resignDate(employee.getResignDate())
-                .position(employee.getPosition())
+                .position(this.positionMapper.mapToDto(employee.getPosition()))
                 .salary(employee.getSalary())
                 .department(this.departmentClient.getById(employee.getDepartmentId()))
                 .isDepartmentHead(employee.isDepartmentHead())

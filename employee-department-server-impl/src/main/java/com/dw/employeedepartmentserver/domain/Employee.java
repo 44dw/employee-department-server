@@ -1,6 +1,7 @@
 package com.dw.employeedepartmentserver.domain;
 
 import com.dw.departmentdictionary.dto.DepartmentDto;
+import com.dw.employeedepartmentserver.constants.EmployeeSex;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -66,8 +67,4 @@ public class Employee {
 
     @Column(nullable = false)
     private boolean isDepartmentHead;
-
-    public enum EmployeeSex {
-        MALE, FEMALE
-    }
 }
