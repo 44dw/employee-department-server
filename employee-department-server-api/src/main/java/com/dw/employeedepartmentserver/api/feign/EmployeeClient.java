@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(url = "http://localhost:8761/employee", name = "employee")
+@FeignClient(url = "http://localhost:8082/employee", name = "employee")
 public interface EmployeeClient {
     @GetMapping
     List<EmployeeDto> getAll();
