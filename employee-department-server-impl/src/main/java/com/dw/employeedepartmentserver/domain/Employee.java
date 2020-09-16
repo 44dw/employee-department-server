@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldNameConstants;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,6 +16,7 @@ import java.util.Date;
 @SequenceGenerator(name = Employee.ID_SEQ, sequenceName = Employee.ID_SEQ, allocationSize = 1)
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldNameConstants
 @Builder
 public class Employee {
     public static final String ID_SEQ = "employee_id_seq";
